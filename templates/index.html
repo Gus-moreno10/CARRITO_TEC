@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi carrito de compras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <h1>Mi carrito de compras</h1>
+            <p class="hero-text">
+                Agrega productos, calcula subtotales y administra el carrito en tiempo real.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Agregar producto</h2>
+            <form id="product-form" class="product-form">
+                <div class="field">
+                    <label for="name">Nombre del producto</label>
+                    <input type="text" id="name" name="name" placeholder="Ej. Audífonos" required>
+                </div>
+
+                <div class="field">
+                    <label for="price">Precio</label>
+                    <input type="number" id="price" name="price" placeholder="Ej. 299.99" min="0" step="0.01" required>
+                </div>
+
+                <div class="field">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Ej. 2" min="1" step="1" required>
+                </div>
+
+                <button type="submit" class="primary-button">Agregar al carrito</button>
+            </form>
+            <p id="message" class="message" aria-live="polite"></p>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Carrito</h2>
+                <span id="item-count" class="badge">0 productos</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body">
+                        <tr id="empty-row">
+                            <td colspan="5" class="empty-state">Tu carrito está vacío.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="total-box">
+                <span>Total general</span>
+                <strong id="total">$0.00</strong>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
